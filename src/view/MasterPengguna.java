@@ -5,11 +5,8 @@
 package view;
 
 import dao.DAO_pengguna;
-import java.io.File;
 import java.util.List;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import model.Model_distributor;
 import model.Model_pengguna;
 import service.Service_pengguna;
@@ -68,7 +65,7 @@ public class MasterPengguna extends javax.swing.JPanel {
         t_nama = new javax.swing.JTextField();
         t_username = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txt_pass = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         t_telp = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -109,7 +106,7 @@ public class MasterPengguna extends javax.swing.JPanel {
         JScrollPanel.setViewportView(tabel_barang);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel2.setText("Data Pengguna");
+        jLabel2.setText("Data Distributor");
 
         bt_tambah.setText("TAMBAH");
         bt_tambah.addActionListener(new java.awt.event.ActionListener() {
@@ -143,8 +140,8 @@ public class MasterPengguna extends javax.swing.JPanel {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        t_cari.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         t_cari.setText("Pencarian");
-        t_cari.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 0, new java.awt.Color(255, 255, 255)));
         t_cari.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 t_cariMouseClicked(evt);
@@ -181,7 +178,7 @@ public class MasterPengguna extends javax.swing.JPanel {
                                 .addComponent(btn_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btn_batal, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 466, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(t_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(28, 28, 28)
                                 .addComponent(jButton2))
@@ -258,8 +255,8 @@ public class MasterPengguna extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Username");
 
-        txt_pass.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txt_pass.setText("Password");
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel7.setText("Password");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Telepon");
@@ -282,12 +279,7 @@ public class MasterPengguna extends javax.swing.JPanel {
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setText("Level");
 
-        cbx_level.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Pilih Akses Level - ", "Owner", "Staff" }));
-        cbx_level.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbx_levelActionPerformed(evt);
-            }
-        });
+        cbx_level.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Pilih Akses -", "Owner", "User", " " }));
 
         t_password.setText("jPasswordField1");
 
@@ -296,22 +288,25 @@ public class MasterPengguna extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(cbx_level, javax.swing.GroupLayout.Alignment.LEADING, 0, 819, Short.MAX_VALUE)
-                    .addComponent(t_alamat, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(t_telp, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(t_password, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(t_username, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(t_nama, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_pass, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(t_id, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(t_nama)
+                    .addComponent(t_id)
+                    .addComponent(t_username)
+                    .addComponent(t_alamat)
+                    .addComponent(t_telp)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(t_password))
+                .addContainerGap())
+            .addComponent(cbx_level, 0, 935, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -329,7 +324,7 @@ public class MasterPengguna extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(t_username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
-                .addComponent(txt_pass)
+                .addComponent(jLabel7)
                 .addGap(18, 18, 18)
                 .addComponent(t_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -360,7 +355,7 @@ public class MasterPengguna extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(btn_batal1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         tambahDataLayout.setVerticalGroup(
             tambahDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -385,20 +380,25 @@ public class MasterPengguna extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_batalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_batalActionPerformed
-        tampilPanel();
-        loadData();
+        mainPanel.removeAll();
+        mainPanel.repaint();
+        mainPanel.revalidate();
+        
+        mainPanel.add(tampilData);
+        mainPanel.repaint();
+        mainPanel.revalidate();
         
     }//GEN-LAST:event_btn_batalActionPerformed
 
     private void btn_batal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_batal1ActionPerformed
+      
         tampilPanel();
         loadData();
         resetForm();
     }//GEN-LAST:event_btn_batal1ActionPerformed
 
     private void bt_tambah1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_tambah1ActionPerformed
-        if(bt_tambah1.getText().equals("TAMBAH")) 
-        {
+        if(bt_tambah1.getText().equals("TAMBAH")) {
            bt_tambah1.setText("SIMPAN");
            t_id.setText(servis.nomor());
         }
@@ -426,8 +426,7 @@ public class MasterPengguna extends javax.swing.JPanel {
         bt_tambah1.setText("SIMPAN");
         t_id.setText(servis.nomor());
         t_id.setEnabled(false);
-        txt_pass.setVisible(false);
-        t_password.setVisible(false);
+        
         
         if(bt_tambah.getText().equals("UBAH"))
         {
@@ -478,10 +477,6 @@ public class MasterPengguna extends javax.swing.JPanel {
     private void t_alamatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_t_alamatActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_t_alamatActionPerformed
-
-    private void cbx_levelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_levelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbx_levelActionPerformed
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -499,6 +494,7 @@ public class MasterPengguna extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -514,7 +510,6 @@ public class MasterPengguna extends javax.swing.JPanel {
     private custom.Tablecustom tabel_barang;
     private javax.swing.JPanel tambahData;
     private javax.swing.JPanel tampilData;
-    private javax.swing.JLabel txt_pass;
     // End of variables declaration//GEN-END:variables
 
     private void loadData() {
@@ -529,29 +524,25 @@ public class MasterPengguna extends javax.swing.JPanel {
         tambahData.setVisible(true);
         
         int row = tabel_barang.getSelectedRow();
-        L_databarang2.setText("Perbarui Data Pengguna");
+        L_databarang2.setText("Perbarui Data Distributor");
         
         
         t_id.setEnabled(false);
         t_nama.setEnabled(true);
         
+        
         t_id.setText     (tabel_barang.getModel().getValueAt(row, 0).toString());
         t_nama.setText   (tabel_barang.getModel().getValueAt(row, 1).toString());
-        t_username.setText              (tabel_barang.getModel().getValueAt(row , 2).toString());
-        //t_password.setText            (tabel_barang.getModel().getValueAt(row, 3).toString());
-        t_telp.setText            (tabel_barang.getModel().getValueAt(row, 3).toString());
-        t_alamat.setText            (tabel_barang.getModel().getValueAt(row, 4).toString());
-        cbx_level.setSelectedItem  (tabel_barang.getModel().getValueAt(row, 5).toString());
+        t_username.setText              (tabel_barang.getModel().getValueAt(row, 2).toString());
+        t_password.setText            (tabel_barang.getModel().getValueAt(row, 3).toString());
         
         
-        txt_pass.setVisible(false);
-        t_password.setVisible(false);
-        
+       
         bt_tambah1.setText("PERBARUI");
         btn_batal.setVisible(true);
     }
 
-    private void hapusData(){
+    private void hapusData() {
        int index = tabel_barang.getSelectedRow();
        if (index!=-1) {
            Model_pengguna model = tblModel.getData(tabel_barang.convertRowIndexToModel(index));
@@ -581,7 +572,8 @@ public class MasterPengguna extends javax.swing.JPanel {
     }
 
     private void simpanData() {
-            if(validasiInput()==true) {        
+            if(validasiInput()==true) {      
+            
             String ID = t_id.getText();
             String nama = t_nama.getText();
             String username = t_username.getText();
@@ -589,7 +581,6 @@ public class MasterPengguna extends javax.swing.JPanel {
             String telepon = t_telp.getText();
             String alamat = t_alamat.getText();
             String level = cbx_level.getSelectedItem().toString();
-            //String imagepath = t_imagepath.getText();
             
             Model_pengguna model = new Model_pengguna();
             model.setId_pengguna(ID);
@@ -599,16 +590,12 @@ public class MasterPengguna extends javax.swing.JPanel {
             model.setTelp_pengguna(telepon);
             model.setAlamat_pengguna(alamat);
             model.setLevel(level);
-            //model.setImagepath(imagepath);
          
-           
-            
-            
             servis.tambahData(model);
             tblModel.tambahData(model);
-            tampilPanel();
             loadData();
             resetForm();
+            tampilPanel();
             bt_tambah.setText("TAMBAH");
             
         }
@@ -620,7 +607,9 @@ public class MasterPengguna extends javax.swing.JPanel {
       
         int index = tabel_barang.getSelectedRow();
         if (index != -1) {
-        Model_pengguna mod_pen= tblModel.getData(tabel_barang.convertRowIndexToModel(index));           
+        Model_pengguna mod_pen= tblModel.getData(tabel_barang.convertRowIndexToModel(index));
+        
+                 
         if (validasiInput() == true) {
             String ID = t_id.getText();
             String nama = t_nama.getText();
@@ -639,13 +628,13 @@ public class MasterPengguna extends javax.swing.JPanel {
             model.setAlamat_pengguna(alamat);
             model.setLevel(level);
                 
-            servis.perbaruiData(model);
-            tblModel.perbaruiData(index,model);
-            loadData();
-            resetForm();
-            tampilPanel();
 
               
+                servis.perbaruiData(model);
+                tblModel.perbaruiData(index,model);
+                loadData();
+                resetForm();
+                tampilPanel();
           
         } 
     }
@@ -655,17 +644,19 @@ public class MasterPengguna extends javax.swing.JPanel {
     boolean valid = false;
   
      if (t_id.getText().trim().isEmpty()) {
-        JOptionPane.showMessageDialog(null, "ID tidak boleh kosong");
+        JOptionPane.showMessageDialog(javax.swing.JOptionPane.getRootFrame(), "ID tidak boleh kosong");
     } else if (t_nama.getText().trim().isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Nama tidak boleh kosong");
+        JOptionPane.showMessageDialog(javax.swing.JOptionPane.getRootFrame(), "Nama tidak boleh kosong");
     } else if (t_username.getText().trim().isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Username tidak boleh kosong");
-    } else if (t_telp.getText().trim().isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Telepon tidak boleh kosong");
-    }else if (t_alamat.getText().trim().isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Alamat tidak boleh kosong");
-   } else if (cbx_level.getSelectedItem().equals("Pilih Akses Level")) {
-        JOptionPane.showMessageDialog(null, "Level Pengguna harus dipilih");
+        JOptionPane.showMessageDialog(javax.swing.JOptionPane.getRootFrame(), "Username tidak boleh kosong");
+    }  else if (t_username.getText().trim().isEmpty()) {
+        JOptionPane.showMessageDialog(javax.swing.JOptionPane.getRootFrame(), "passwordtidak boleh kosong");
+    } else if (t_username.getText().trim().isEmpty()) {
+        JOptionPane.showMessageDialog(javax.swing.JOptionPane.getRootFrame(), "Telepom tidak boleh kosong");
+    }else if (t_password.getText().trim().isEmpty()) {
+        JOptionPane.showMessageDialog(javax.swing.JOptionPane.getRootFrame(), "Alamat tidak boleh kosong");
+   } else if (t_username.getText().trim().isEmpty()) {
+        JOptionPane.showMessageDialog(javax.swing.JOptionPane.getRootFrame(), "LevelBarang tidak boleh kosong");
     } else {
         valid = true;
     }

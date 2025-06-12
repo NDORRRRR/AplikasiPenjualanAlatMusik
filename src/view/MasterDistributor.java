@@ -28,7 +28,8 @@ public class MasterDistributor extends javax.swing.JPanel {
     public MasterDistributor() {
         initComponents();
         
-        tabel_barang.setModel(tblModel);       
+        tabel_barang.setModel(tblModel);
+        
         loadData();
     }
 
@@ -245,7 +246,7 @@ public class MasterDistributor extends javax.swing.JPanel {
         });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setText("Telepon");
+        jLabel6.setText("Telepom");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("Alamat");
@@ -335,14 +336,21 @@ public class MasterDistributor extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_batalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_batalActionPerformed
-        tampilPanel();
-        loadData();
+        mainPanel.removeAll();
+        mainPanel.repaint();
+        mainPanel.revalidate();
+        
+        mainPanel.add(tampilData);
+        mainPanel.repaint();
+        mainPanel.revalidate();
+        
     }//GEN-LAST:event_btn_batalActionPerformed
 
     private void btn_batal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_batal1ActionPerformed
+      
         tampilPanel();
         loadData();
-        resetForm();    
+        resetForm();
     }//GEN-LAST:event_btn_batal1ActionPerformed
 
     private void bt_tambah1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_tambah1ActionPerformed
@@ -511,18 +519,20 @@ public class MasterDistributor extends javax.swing.JPanel {
 
     private void simpanData() {
             if(validasiInput()==true) {      
+            Model_distributor model = new Model_distributor();
             String id = t_idDistributor.getText();
             String nama_dis = t_NamaDistributor.getText();
             String telp_dis = t_Telp.getText();
             String alamat_dis = t_Alamat.getText();
             
 
-            Model_distributor model = new Model_distributor();
+           
             
             model.setId_distributor(id);
             model.setNama_distributor(nama_dis);
             model.setTelp_distributor(telp_dis);
-            model.setAlamat_distributor(alamat_dis);                                               
+            model.setAlamat_distributor(alamat_dis);                                                                                 
+           
          
             servis.tambahData(model);
             tblModel.tambahData(model);
@@ -537,9 +547,10 @@ public class MasterDistributor extends javax.swing.JPanel {
 
     
     private void perbaruiData() {
+      
         int index = tabel_barang.getSelectedRow();
         if (index != -1) {
-        Model_distributor mod_dis = tblModel.getData(tabel_barang.convertRowIndexToModel(index));
+        Model_distributor model = tblModel.getData(tabel_barang.convertRowIndexToModel(index));
         
                  
         if (validasiInput() == true) {
@@ -548,8 +559,7 @@ public class MasterDistributor extends javax.swing.JPanel {
             String telp_dis = t_Telp.getText();
             String alamat_dis = t_Alamat.getText();
             
-            Model_distributor model = new Model_distributor();
-            
+            Model_distributor model_dis = new Model_distributor();
             model.setId_distributor(id);
             model.setNama_distributor(nama_dis);
             model.setTelp_distributor(telp_dis);

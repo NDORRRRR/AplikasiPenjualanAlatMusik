@@ -9,6 +9,7 @@ import java.util.List;
 import model.Model_pengguna;
 import service.Service_pengguna;
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -35,19 +36,19 @@ public class DAO_pengguna implements Service_pengguna {
     @Override
     public void tambahData(Model_pengguna mod_pengguna) {
     PreparedStatement st = null;
-    String sql = "INSERT INTO pengguna(id_pengguna,nama_pengguna,username,password,telp_pengguna,alamat_pengguna,level,gambar) VALUES (?,?,?,?,?,?,?,?)";
+    String sql = "INSERT INTO pengguna (id_pengguna, nama_pengguna, username, password, telp_pennguna,alamat_pengguna,level) VALUES (?, ?, ?, ?, ?, ?, ?)";
     try {
         st = conn.prepareStatement(sql);
       
         st.setString(1, mod_pengguna.getId_pengguna());
         st.setString(2, mod_pengguna.getNama_pengguna());
         st.setString(3, mod_pengguna.getUsername());
-        st.setString(4, Encrypt.getmd5java(mod_pengguna.getPassword()));
+        //st.setString(4, Encrypt.getmd5java(mod_pengguna.getPassword()));
         st.setString(5, mod_pengguna.getTelp_pengguna());
         st.setString(6, mod_pengguna.getAlamat_pengguna());
         st.setString(7, mod_pengguna.getLevel());
-        //st.setString(8, mod_pengguna.getImagepath());
         
+
         st.executeUpdate();
     } catch (SQLException ex) {
         Logger.getLogger(DAO_pengguna.class.getName()).log(Level.SEVERE, null, ex);
@@ -68,20 +69,19 @@ public class DAO_pengguna implements Service_pengguna {
     String sql = "UPDATE pengguna SET nama_pengguna=?,username=?,telp_pengguna=?,alamat_pengguna=?,level=? WHERE id_pengguna=?";
     try {
         st = conn.prepareStatement(sql);
-        st.setString(1, mod_pengguna.getNama_pengguna());
-        st.setString(2, mod_pengguna.getUsername());
-       // st.setString(3, Encrypt.getmd5java(mod_pengguna.getPassword()));
-        st.setString(3, mod_pengguna.getTelp_pengguna());
-        st.setString(4, mod_pengguna.getAlamat_pengguna());
-        st.setString(5, mod_pengguna.getLevel());
-        st.setString(6, mod_pengguna.getId_pengguna());
+        st.setString(1, mod_pengguna.getId_pengguna());
+        st.setString(2, mod_pengguna.getNama_pengguna());
+        st.setString(3, mod_pengguna.getUsername());
+        st.setString(4, Encrypt.getmd5java(mod_pengguna.getPassword()));
+        st.setString(5, mod_pengguna.getTelp_pengguna());
+        st.setString(6, mod_pengguna.getAlamat_pengguna());
+        st.setString(7, mod_pengguna.getLevel());
 
         st.executeUpdate();
-        
     } catch (SQLException ex) {
         Logger.getLogger(DAO_pengguna.class.getName()).log(Level.SEVERE, null, ex);
     } finally {
-        if (st!= null) {
+        if (st != null) {
             try {
                 st.close();
             } catch (SQLException ex) {
@@ -94,7 +94,7 @@ public class DAO_pengguna implements Service_pengguna {
 
     @Override
     public void hapusData(Model_pengguna mod_pengguna) {
-    PreparedStatement st = null;
+        PreparedStatement st = null;
     String sql = "DELETE FROM pengguna WHERE id_pengguna=?";
     try {
         st = conn.prepareStatement(sql);
@@ -146,14 +146,14 @@ public class DAO_pengguna implements Service_pengguna {
         java.util.logging.Logger.getLogger(DAO_pengguna.class.getName()).log(Level.SEVERE, null, ex);
         return null;
     } finally {
-        if (st!= null) {
+        if (st != null) {
             try {
                 st.close();
             } catch (SQLException ex) {
                 java.util.logging.Logger.getLogger(DAO_pengguna.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        if (rs!= null) {
+        if (rs != null) {
             try {
                 rs.close();
             } catch (SQLException ex) {
@@ -165,7 +165,7 @@ public class DAO_pengguna implements Service_pengguna {
 
     @Override
     public List<Model_pengguna> pencarian(String id) {
-        PreparedStatement st = null;
+         PreparedStatement st = null;
         List list = new ArrayList();
         ResultSet rs = null;
         String sql = "SELECT * FROM pengguna WHERE id_pengguna LIKE '%"+id+"%' OR nama_pennguna LIKE '%"+id+"%'OR username LIKE '%"+id+"%'OR telp_pengguna LIKE '%"+id+"%'"; 
@@ -206,45 +206,45 @@ public class DAO_pengguna implements Service_pengguna {
             }
         }
 
-        @Override
-        public String nomor() {
+    @Override
+    public String nomor() {
         PreparedStatement st = null;
-        ResultSet rs = null;
-        String urutan = null;
+    ResultSet rs = null;
+    String urutan = null;
 
-        Date now = new Date();
-        SimpleDateFormat tanggal = new SimpleDateFormat("yyyy-MM-dd");
-        SimpleDateFormat noformat = new SimpleDateFormat("yyyyMM");
-        String tgl = tanggal.format(now);
-        String no = noformat.format(now);
+    Date now = new Date();
+    SimpleDateFormat tanggal = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat noformat = new SimpleDateFormat("yyyyMM");
+    String tgl = tanggal.format(now);
+    String no = noformat.format(now);
 
-        String sql = "SELECT RIGHT(id_pengguna, 3) AS Nomor FROM pengguna WHERE id_pengguna LIKE 'USR" + no + "%' ORDER BY id_pengguna DESC LIMIT 1";
+    String sql = "SELECT RIGHT(id_pengguna, 3) AS Nomor FROM pengguna WHERE id_pengguna LIKE 'B" + no + "%' ORDER BY id_pengguna DESC LIMIT 1";
 
-        try {
-            st = conn.prepareStatement(sql);
-            rs = st.executeQuery();
+    try {
+        st = conn.prepareStatement(sql);
+        rs = st.executeQuery();
 
-            if (rs.next()) {
-                int nomor = Integer.parseInt(rs.getString("Nomor"));
-                nomor++;
-                urutan = "USR" + no + String.format("%03d", nomor);
-            } else {
-                urutan = "USR" + no + "001";
-            }
-        } catch (SQLException ex) {
-            java.util.logging.Logger.getLogger(DAO_pengguna.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            if (st != null) {
-                try {
-                    st.close();
-                } catch (SQLException ex) {
-                    java.util.logging.Logger.getLogger(DAO_pengguna.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        if (rs.next()) {
+            int nomor = Integer.parseInt(rs.getString("Nomor"));
+            nomor++;
+            urutan = "USR" + no + String.format("%03d", nomor);
+        } else {
+            urutan = "USR" + no + "001";
+        }
+    } catch (SQLException ex) {
+        java.util.logging.Logger.getLogger(DAO_pengguna.class.getName()).log(Level.SEVERE, null, ex);
+    } finally {
+        if (st != null) {
+            try {
+                st.close();
+            } catch (SQLException ex) {
+                java.util.logging.Logger.getLogger(DAO_pengguna.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
 
-        return urutan;
-        }
+    return urutan;
+    }
 
     @Override
     public boolean validateOldPassword(String username, String oldPassword) {

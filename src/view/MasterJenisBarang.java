@@ -135,8 +135,8 @@ public class MasterJenisBarang extends javax.swing.JPanel {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        t_cari.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         t_cari.setText("Pencarian");
-        t_cari.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 0, new java.awt.Color(0, 0, 0)));
         t_cari.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 t_cariMouseClicked(evt);
@@ -201,7 +201,7 @@ public class MasterJenisBarang extends javax.swing.JPanel {
                 .addComponent(JScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
 
         mainPanel.add(tampilData, "card2");
@@ -308,8 +308,13 @@ public class MasterJenisBarang extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_batalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_batalActionPerformed
-        tampilPanel();
-        loadData();
+        mainPanel.removeAll();
+        mainPanel.repaint();
+        mainPanel.revalidate();
+        
+        mainPanel.add(tampilData);
+        mainPanel.repaint();
+        mainPanel.revalidate();
         
     }//GEN-LAST:event_btn_batalActionPerformed
 

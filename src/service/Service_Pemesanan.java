@@ -13,13 +13,12 @@ import model.Model_pemesanan;
  */
 public interface Service_Pemesanan {
     void tambahData     (Model_pemesanan mod_pesan);
-    void perbaruiData     (Model_pemesanan mod_pesan);
-    void hapusData     (Model_pemesanan mod_pesan);
+    void perbaruiData (Model_pemesanan mod_pesan);
+    void hapusData    (Model_pemesanan mod_pesan);
     
-    Model_pemesanan getByid (String id);
+    Model_pemesanan get (String id);
     List<Model_pemesanan> getData();
     List<Model_pemesanan> pencarian (String id);
     String nomor();
-
     
 }

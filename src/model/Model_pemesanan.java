@@ -13,7 +13,7 @@ public class Model_pemesanan {
     private String no_pesan;
     private String tgl_pesan;
     private Long total_pesan;
-    private Model_distributor mod_distributor;
+    private Model_distributor mod_pesan;
     private Model_pengguna mod_pengguna;
 
     public String getNo_pesan() {
@@ -40,12 +40,12 @@ public class Model_pemesanan {
         this.total_pesan = total_pesan;
     }
 
-    public Model_distributor getMod_distributor() {
-        return mod_distributor;
+    public Model_distributor getMod_pesan() {
+        return mod_pesan;
     }
 
-    public void setMod_distributor(Model_distributor mod_distributor) {
-        this.mod_distributor = mod_distributor;
+    public void setMod_pesan(Model_distributor mod_pesan) {
+        this.mod_pesan = mod_pesan;
     }
 
     public Model_pengguna getMod_pengguna() {
@@ -56,6 +56,5 @@ public class Model_pemesanan {
         this.mod_pengguna = mod_pengguna;
     }
 
-    
     
 }

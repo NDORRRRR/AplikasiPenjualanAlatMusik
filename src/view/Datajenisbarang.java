@@ -27,7 +27,7 @@ public class Datajenisbarang extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-        setBackground(new Color(0,0,0,0));
+        
         
         tbl_jenisbarang.setModel(tblmodel);
         btn_search.requestFocus();
@@ -52,7 +52,6 @@ public class Datajenisbarang extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setUndecorated(true);
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 formMouseDragged(evt);

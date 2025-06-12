@@ -73,7 +73,7 @@ public class TableMod_Pemesanan extends AbstractTableModel {
           case 0: return list.get(rowIndex).getNo_pesan();
           case 1: return list.get(rowIndex).getTgl_pesan();
           case 2: return list.get(rowIndex).getTotal_pesan();
-          case 3: return list.get(rowIndex).getMod_distributor().getId_distributor();
+          case 3: return list.get(rowIndex).getMod_pesan().getId_distributor();
           case 4: return list.get(rowIndex).getMod_pengguna().getId_pengguna();
           
                     

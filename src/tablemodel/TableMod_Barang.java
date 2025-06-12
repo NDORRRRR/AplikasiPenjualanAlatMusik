@@ -71,6 +71,7 @@ public class TableMod_Barang extends AbstractTableModel{
         if (columnIndex == 0){
             return "   " + (rowIndex + 1);
         } else { 
+        
         switch (columnIndex - 1){
             
           case 0: return list.get(rowIndex).getKode_Barang();

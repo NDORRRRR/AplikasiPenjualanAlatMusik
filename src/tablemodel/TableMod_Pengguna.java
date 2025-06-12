@@ -60,37 +60,46 @@ public class TableMod_Pengguna extends AbstractTableModel {
     return list.size();
        
     }
-    private final String[] columnNames = {"No", "ID", "nama pengguna", "username", "telp_pengguna", "alamat_pengguna", "level"};
+
     @Override
     public int getColumnCount() {       
-        return columnNames.length;   
+        return 8;   
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {      
-        if (columnIndex == 0){
-            return "   " + (rowIndex + 1);
-        } else { 
-        
-        switch (columnIndex - 1){
+        switch (columnIndex){
             
           case 0: return list.get(rowIndex).getId_pengguna();
           case 1: return list.get(rowIndex).getNama_pengguna();
           case 2: return list.get(rowIndex).getUsername();
-          case 3: return list.get(rowIndex).getTelp_pengguna();
-          case 4: return list.get(rowIndex).getAlamat_pengguna();
-          case 5: return list.get(rowIndex).getLevel();
+          case 3: return list.get(rowIndex).getPassword();
+          case 4: return list.get(rowIndex).getTelp_pengguna();
+          case 5: return list.get(rowIndex).getAlamat_pengguna();
+          case 6: return list.get(rowIndex).getLevel();
+          
+          
+             
           default: return null;
         }       
-     }  
-  }
-   @Override
-    public String getColumnName(int column){
-        if(column == 0){
-            return "  " + columnNames[column];
-        } else{
-        return columnNames[column];
+     }   
+    public String getColumnName(int column) {
+        switch (column){
+            case 0: return "ID Pengguna"; 
+            case 1: return "Nama Pengguna"; 
+            case 2: return "Username"; 
+            case 3: return "Password"; 
+            case 4: return "Telepon Penggunaa";
+            case 5: return "Alamat Pengguna";
+            case 6: return "Level";
+            
+                        
+            
+            default: return null;
     }
-  }
     
+    }
 }
+
+    
+

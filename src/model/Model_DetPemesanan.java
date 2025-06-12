@@ -11,26 +11,26 @@ package model;
  */
 public class Model_DetPemesanan {
     
-    private Model_pemesanan mod_pesan;
-    private Model_barang mod_barang;
+    private Model_pemesanan modpesan;
+    private Model_barang modbarang;
     private Long  jml_pesan;
-    private Long subTotal;
+    private Long subTotalpesan;
     private String status;
 
-    public Model_pemesanan getMod_pesan() {
-        return mod_pesan;
+    public Model_pemesanan getModpesan() {
+        return modpesan;
     }
 
-    public void setMod_pesan(Model_pemesanan mod_pesan) {
-        this.mod_pesan = mod_pesan;
+    public void setModpesan(Model_pemesanan modpesan) {
+        this.modpesan = modpesan;
     }
 
-    public Model_barang getMod_barang() {
-        return mod_barang;
+    public Model_barang getModbarang() {
+        return modbarang;
     }
 
-    public void setMod_barang(Model_barang mod_barang) {
-        this.mod_barang = mod_barang;
+    public void setModbarang(Model_barang modbarang) {
+        this.modbarang = modbarang;
     }
 
     public Long getJml_pesan() {
@@ -41,12 +41,12 @@ public class Model_DetPemesanan {
         this.jml_pesan = jml_pesan;
     }
 
-    public Long getSubTotal() {
-        return subTotal;
+    public Long getSubTotalpesan() {
+        return subTotalpesan;
     }
 
-    public void setSubTotal(Long subTotal) {
-        this.subTotal = subTotal;
+    public void setSubTotalpesan(Long subTotalpesan) {
+        this.subTotalpesan = subTotalpesan;
     }
 
     public String getStatus() {
@@ -56,6 +56,5 @@ public class Model_DetPemesanan {
     public void setStatus(String status) {
         this.status = status;
     }
-
 
 }

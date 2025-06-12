@@ -3,8 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package main;
-import javax.swing.BorderFactory;
-import java.awt.Color;
+
+import main.Content_bg;
+import main.FormBarang;
+import java.awt.MenuItem;
+import java.awt.PopupMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -15,9 +18,6 @@ import view.MasterBarang;
 import view.MasterJenisBarang;
 import java.util.Date;
 import view.MasterDistributor;
-import view.MasterPengguna;
-import view.Transaksi_Pemesanan;
-
 
 /**
  *
@@ -34,7 +34,6 @@ public class MenuUtama extends javax.swing.JFrame {
         
         lb_nama.setText(Nama);
         lb_level.setText(Level2);
-        
         execute();
         Date();
         
@@ -42,11 +41,9 @@ public class MenuUtama extends javax.swing.JFrame {
 
     private void Date() {
         Date Tanggalsekarang = new Date();
-        SimpleDateFormat TanggalWaktu = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat TanggalWaktu = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String tanggal = TanggalWaktu.format(Tanggalsekarang);
         lb_tanggal.setText(tanggal);
-        lb_tanggal.setForeground(Color.WHITE);
-        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -86,8 +83,8 @@ public class MenuUtama extends javax.swing.JFrame {
         pn_navbarLayout.setHorizontalGroup(
             pn_navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_navbarLayout.createSequentialGroup()
-                .addContainerGap(657, Short.MAX_VALUE)
-                .addComponent(lb_tanggal)
+                .addContainerGap(636, Short.MAX_VALUE)
+                .addComponent(lb_tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         pn_navbarLayout.setVerticalGroup(
@@ -274,30 +271,12 @@ public class MenuUtama extends javax.swing.JFrame {
                 pn_utama.revalidate();
             }
         });
-         Menuitem barang4 = new Menuitem (null, true, iconBarang, "Pengguna", new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                pn_utama.removeAll();
-                pn_utama.add(new MasterPengguna());
-                pn_utama.repaint();
-                pn_utama.revalidate();
-            }
-        });
              
        
          
     
         
-        Menuitem Transaksi1 = new Menuitem (null, true, iconBarang, "Pemesanan", new ActionListener(){
-                 @Override
-            public void actionPerformed(ActionEvent e) {
-                pn_utama.removeAll();
-                pn_utama.add(new Transaksi_Pemesanan());
-                pn_utama.repaint();
-                pn_utama.revalidate();
-            }
-        });
-        
+        Menuitem Transaksi1 = new Menuitem (null, true, iconBarang, "Pemesanan", null);
         Menuitem Transaksi2 = new Menuitem (null, true, iconBarang, "Barang Masuk", null);
         Menuitem Transaksi3 = new Menuitem (null, true, iconBarang, "Barang Keluar", null);
         
@@ -306,7 +285,7 @@ public class MenuUtama extends javax.swing.JFrame {
         Menuitem Report3 = new Menuitem (null, true, iconBarang, "Barang Masuk", null);
         Menuitem Report4 = new Menuitem (null, true, iconBarang, "Barang Keluar", null);
         
-        Menuitem menuDashboard    = new Menuitem(iconMaster, false, null, "Menu Barang", null, barang1, barang2, barang3, barang4);
+        Menuitem menuDashboard    = new Menuitem(iconMaster, false, null, "Menu Barang", null, barang1, barang2, barang3);
         Menuitem menuTransaksi    = new Menuitem(iconMaster, false, null, "Pemesanan", null, Transaksi1, Transaksi2, Transaksi3);
         Menuitem menuReport       = new Menuitem(iconMaster, false, null, "Laporan Penjualann", null, Report1, Report2, Report3, Report4);
         

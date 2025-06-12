@@ -5,10 +5,10 @@
 package dao;
 
 import config.Koneksi;
+import java.sql.Connection;
 import java.util.List;
 import model.Model_semPemesanan;
 import service.Service_SemPemesanan;
-import java.sql.Connection;
 
 /**
  *
@@ -20,7 +20,6 @@ public class DAO_SemPemesanan implements Service_SemPemesanan {
     
     public DAO_SemPemesanan() {
        conn = Koneksi.getConnection();
-        
     }
 
     @Override
@@ -48,4 +47,4 @@ public class DAO_SemPemesanan implements Service_SemPemesanan {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
-}
+} 

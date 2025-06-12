@@ -34,10 +34,9 @@ public class DAO_Barang implements Service_barang {
     public void tambahData(Model_barang mod_bar) {
     PreparedStatement st = null;
     String sql = "INSERT INTO barang (kode_barang, kode_jenis, nama_barang, "
-               + "satuan, harga, stok) VALUES (?,?,?,?,?,?)";
+               + "satuan, harga, stok) VALUES (?, ?, ?, ?, ?, ?)";
     try {
         st = conn.prepareStatement(sql);
-        
         st.setString(1, mod_bar.getKode_Barang());
         st.setString(2, mod_bar.getJns_barang().getKode_jenis());
         st.setString(3, mod_bar.getNama_barang());
@@ -63,22 +62,20 @@ public class DAO_Barang implements Service_barang {
 
     @Override
     public void perbaruiData(Model_barang mod_bar) {
-    PreparedStatement st = null;
-    String sql = "UPDATE barang SET"
-               + "kode_jenis=?, nama_barang=?, satuan=?, harga=?, stok=?"
+         PreparedStatement st = null;
+    String sql = "UPDATE barang SET "
+               + "kode_jenis=?, nama_barang=?, satuan=?, harga=?, stok=? "
                + "WHERE kode_barang='" + mod_bar.getKode_Barang()+ "'";
     try {
         st = conn.prepareStatement(sql);
-        
         st.setString(1, mod_bar.getJns_barang().getKode_jenis());
         st.setString(2, mod_bar.getNama_barang());
         st.setString(3, mod_bar.getSatuan());
         st.setLong(4, mod_bar.getHarga());
         st.setInt(5, mod_bar.getStok());
-        
         st.executeUpdate();
-        
     } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Perbarui Data Gagal!");
         Logger.getLogger(DAO_Barang.class.getName()).log(Level.SEVERE, null, ex);
     } finally {
         if (st != null) {
@@ -96,12 +93,10 @@ public class DAO_Barang implements Service_barang {
     public void hapusData(Model_barang mod_bar) {
     PreparedStatement st = null;
     String sql = "DELETE FROM barang WHERE kode_barang=?";
-    
     try {
         st = conn.prepareStatement(sql);
         st.setString(1, mod_bar.getKode_Barang());
         st.executeUpdate();
-        
     } catch (SQLException ex) {
         java.util.logging.Logger.getLogger(DAO_Barang.class.getName()).log(Level.SEVERE, null, ex);
     } finally {
@@ -128,54 +123,47 @@ public class DAO_Barang implements Service_barang {
     }
 
    @Override
-public List<Model_barang> getData() {
-    PreparedStatement st = null;
-    List<Model_barang> list = new ArrayList<>();
-    ResultSet rs = null;    
-    String sql = "SELECT bg.kode_barang,bg.kode_jenis,jb.nama_jenis,bg.nama_barang,bg.satuan,bg.harga,bg.stok FROM barang bg INNER JOIN jenis_barang jb ON jb.kode_jenis=bg.kode_jenis";
+        public List<Model_barang> getData() {
+        PreparedStatement st = null;
+        List<Model_barang> list = new ArrayList<>();
+        ResultSet rs = null;
+        String sql = "SELECT bg.kode_barang, bg.kode_jenis, jb.nama_jenis, bg.nama_barang, bg.satuan, bg.harga, bg.stok " +
+             "FROM barang bg " +
+             "INNER JOIN jenis_barang jb ON bg.kode_jenis = jb.kode_jenis";
 
-    try {
-        st = conn.prepareStatement(sql);
-        rs = st.executeQuery();
-        while (rs.next()) {
-            Model_barang mobar = new Model_barang();
-            Model_jenis_barang jbr = new Model_jenis_barang();
 
-            mobar.setKode_Barang        (rs.getString("kode_barang"));
-            jbr.setKode_jenis           (rs.getString("kode_jenis"));
-            jbr.setNama_jenis           (rs.getString("nama_jenis"));
-            mobar.setNama_barang        (rs.getString("nama_barang"));
-            mobar.setSatuan             (rs.getString("satuan"));
-            mobar.setHarga              (rs.getLong("harga"));
-            mobar.setStok               (rs.getInt("stok"));
-            
-            mobar.setJns_barang(jbr);
+        try {
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            while (rs.next()) {
+                Model_barang mobar = new Model_barang();
+                Model_jenis_barang jbr = new Model_jenis_barang();
 
-            list.add(mobar);
-        }
-        return list;
-    } catch (SQLException ex) {
-        java.util.logging.Logger.getLogger(DAO_Barang.class.getName()).log(Level.SEVERE, null, ex);
-        return null;
-    } finally {
-            if (st!= null){
-                try{
-                    st.close();
-                    } catch (SQLException ex) {
-                     java.util.logging.Logger.getLogger(DAO_Barang.class.getName()).log(Level.SEVERE, null, ex);
-              }
-           }
-            if (rs!=null) {
+                mobar.setKode_Barang(rs.getString("kode_barang"));
+                jbr.setKode_jenis(rs.getString("kode_jenis"));
+                jbr.setNama_jenis(rs.getString("nama_jenis"));
+                mobar.setNama_barang(rs.getString("nama_barang"));
+                mobar.setSatuan(rs.getString("satuan"));
+                mobar.setHarga(rs.getLong("harga"));
+                mobar.setStok(rs.getInt("stok"));
+                mobar.setJns_barang(jbr);
+
+                list.add(mobar);
+                }
+                return list;
+            } catch (SQLException ex) {
+                Logger.getLogger(DAO_Barang.class.getName()).log(Level.SEVERE, null, ex);
+                return null;
+            } finally {
                 try {
-                    rs.close();
-                     } catch (SQLException ex) {
-                        java.util.logging.Logger.getLogger(DAO_Barang.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    }                
-            
-}
-    
+                    if (rs != null) rs.close();
+                    if (st != null) st.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(DAO_Barang.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+            }
     @Override
     public List<Model_barang> pencarian(String id) {
             PreparedStatement st = null;
@@ -183,8 +171,8 @@ public List<Model_barang> getData() {
             List list = new ArrayList<>();
             String sql = "SELECT bg.kode_barang, bg.kode_jenis, jb.nama_jenis, "
                        + "bg.nama_barang, bg.satuan, bg.harga, bg.stok FROM barang bg "
-                       + "INNER JOIN jenis_barang jb ON jb.kode_jenis=bg.kode_jenis "
-                       + "WHERE kode_barang LIKE '%"+id+"%' OR nama_barang LIKE '%"+id+"%'";
+               + "INNER JOIN jenis_barang jb ON jb.kode_jenis=bg.kode_jenis "
+               + "WHERE kode_barang LIKE '%"+id+"%' OR nama_barang LIKE '%"+id+"%'";
     try {
         st = conn.prepareStatement(sql);
         rs = st.executeQuery();
@@ -238,7 +226,7 @@ public List<Model_barang> getData() {
 
     Date now = new Date();
     SimpleDateFormat tanggal = new SimpleDateFormat("yyyy-MM-dd");
-    SimpleDateFormat noformat = new SimpleDateFormat("yyMM");
+    SimpleDateFormat noformat = new SimpleDateFormat("yyyyMM");
     String tgl = tanggal.format(now);
     String no = noformat.format(now);
 

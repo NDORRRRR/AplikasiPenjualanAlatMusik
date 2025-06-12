@@ -8,7 +8,6 @@ import java.util.logging.Logger;
 
 public class Encrypt {
     public static String getmd5java(String message) {
-        
         String digest = null;
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
@@ -17,7 +16,7 @@ public class Encrypt {
             // merubah byte array ke dalam String Hexadecimal
             StringBuilder sb = new StringBuilder(2*hash.length);
             for (byte b : hash) {
-                sb.append(String.format("%02x", b&0xff));
+                sb.append(String.format("%02x", b & 0xff));
             }
             digest = sb.toString();
         } catch (UnsupportedEncodingException ex) {

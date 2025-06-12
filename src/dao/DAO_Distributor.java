@@ -16,8 +16,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import model.Model_distributor;
+import model.Model_jenis_barang;
 import service.Service_Distributor;
 
 
@@ -38,7 +38,6 @@ public class DAO_Distributor implements Service_Distributor {
     public void tambahData(Model_distributor mod_dis) {
     PreparedStatement st = null;
     String sql = "INSERT INTO distributor (id_distributor,nama_distributor,telp_distributor,alamat_distributor) VALUES (?, ?, ?, ?)";
-    
     try {
         st = conn.prepareStatement(sql);
         st.setString(1, mod_dis.getId_distributor());
@@ -49,7 +48,6 @@ public class DAO_Distributor implements Service_Distributor {
 
         st.executeUpdate();
     } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Gagal menyimpan data: " + ex.getMessage());
         Logger.getLogger(DAO_Distributor.class.getName()).log(Level.SEVERE, null, ex);
     } finally {
         if (st != null) {
@@ -59,22 +57,19 @@ public class DAO_Distributor implements Service_Distributor {
                 Logger.getLogger(DAO_Distributor.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }  
- }
+    }   
+    }
 
     @Override
     public void perbaruiData(Model_distributor mod_dis) {
         PreparedStatement st = null;
-    String sql = "UPDATE distributor SET id_distributor=?, nama_distributor=?, telp_distributor=?, alamat_distributor=? WHERE id_distributor=?";
+    String sql = "UPDATE distributor SET nama_distributor=?, telp_distributor=?, alamat_distributor=? WHERE id_distributor=?";
     try {
         st = conn.prepareStatement(sql);
-        
-        st.setString(1, mod_dis.getId_distributor());
-        st.setString(2, mod_dis.getNama_distributor());
-        st.setString(3, mod_dis.getTelp_distributor());
-        st.setString(4, mod_dis.getAlamat_distributor());
-        st.setString(5, mod_dis.getId_distributor());
-        
+        st.setString(1, mod_dis.getNama_distributor());
+        st.setString(2, mod_dis.getTelp_distributor());
+        st.setString(3, mod_dis.getAlamat_distributor());
+        st.setString(4, mod_dis.getId_distributor());
 
         st.executeUpdate();
     } catch (SQLException ex) {
@@ -121,8 +116,8 @@ public class DAO_Distributor implements Service_Distributor {
     @Override
     public List<Model_distributor> getData() {
     PreparedStatement st = null;
+    ResultSet rs = null;
     List list = new ArrayList<>();
-    ResultSet rs = null;    
     String sql = "SELECT * FROM distributor";
     try {
         st = conn.prepareStatement(sql);
@@ -212,7 +207,7 @@ public class DAO_Distributor implements Service_Distributor {
     String tgl = tanggal.format(now);
     String no = noformat.format(now);
 
-    String sql = "SELECT RIGHT(id_distributor, 3) AS Nomor FROM distributor  WHERE id_distributor LIKE 'DST" + no + "%' ORDER BY id_distributor DESC LIMIT 1";
+    String sql = "SELECT RIGHT(id_distributor, 3) AS Nomor FROM distributor  WHERE id_distributor LIKE 'B" + no + "%' ORDER BY id_distributor DESC LIMIT 1";
 
     try {
         st = conn.prepareStatement(sql);

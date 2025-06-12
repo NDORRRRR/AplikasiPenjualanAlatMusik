@@ -73,12 +73,12 @@ import model.Model_DetPemesanan;
     public Object getValueAt(int rowIndex, int columnIndex) {      
         switch (columnIndex){
             
-          case 0: return list.get(rowIndex).getMod_pesan().getNo_pesan();
-          case 1: return list.get(rowIndex).getMod_barang().getKode_Barang();
-          case 2: return list.get(rowIndex).getMod_barang().getNama_barang();
-          case 3: return list.get(rowIndex).getMod_barang().getHarga();
+          case 0: return list.get(rowIndex).getModpesan().getNo_pesan();
+          case 1: return list.get(rowIndex).getModbarang().getKode_Barang();
+          case 2: return list.get(rowIndex).getModbarang().getNama_barang();
+          case 3: return list.get(rowIndex).getModbarang().getHarga();
           case 4: return list.get(rowIndex).getJml_pesan();
-          case 5: return list.get(rowIndex).getSubTotal();
+          case 5: return list.get(rowIndex).getSubTotalpesan();
           case 6: return list.get(rowIndex).getStatus();
           
           

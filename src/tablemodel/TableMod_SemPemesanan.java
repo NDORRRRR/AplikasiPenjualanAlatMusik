@@ -74,7 +74,7 @@ public class TableMod_SemPemesanan extends AbstractTableModel {
           case 1: return list.get(rowIndex).getMod_barang().getNama_barang();
           case 2: return list.get(rowIndex).getMod_barang().getHarga();
           case 3: return list.get(rowIndex).getMod_detpesan().getJml_pesan();
-          case 4: return list.get(rowIndex).getMod_detpesan().getSubTotal();
+          case 4: return list.get(rowIndex).getMod_detpesan().getSubTotalpesan();
  
 
      
