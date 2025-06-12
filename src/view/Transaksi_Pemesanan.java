@@ -727,7 +727,7 @@ import tablemodel.TableMod_SemPemesanan;
        String id = tabel_barang.getValueAt(row, 0).toString();
 
        pn_detail.setVisible(true);
-        List<Model_Detpemesanan> list = servis_det.getData();
+        List<Model_Detpemesanan> list = servis_det.getData(id);
         tblModel_psn.setData(list);
     }//GEN-LAST:event_tabel_barangMouseClicked
 
@@ -863,15 +863,8 @@ import tablemodel.TableMod_SemPemesanan;
         
         t_kodeBarang.setEnabled(false);
         //t_kodejenisbarang.setEnabled(true);
-        t_namajenisbarang.setEnabled(true);
+        //t_namajenisbarang.setEnabled(true);
         
-        t_kodeBarang.setText        (tabel_barang.getModel().getValueAt(row, 1).toString());
-        t_kodejenisbarang.setText   (tabel_barang.getModel().getValueAt(row, 2).toString());
-        t_namajenisbarang.setText   (tabel_barang.getModel().getValueAt(row, 3).toString());
-        t_namabarang.setText        (tabel_barang.getModel().getValueAt(row, 4).toString());
-        cbx_satuan.setSelectedItem  (tabel_barang.getModel().getValueAt(row, 5).toString());
-        t_harga.setText             (tabel_barang.getModel().getValueAt(row, 6).toString());
-        t_stok.setText              (tabel_barang.getModel().getValueAt(row, 7).toString());
         
         aktif();
         bt_tambah1.setText("PERBARUI");
@@ -905,13 +898,10 @@ import tablemodel.TableMod_SemPemesanan;
    
     
     private void aktif() {
-        t_namabarang.setEnabled(true);   
-        cbx_satuan.setEnabled(true);
-        t_harga.setEnabled(true);
-        t_stok.setEnabled(true);
+        
     }
 
-   // private void simpanData() {
+    private void simpanData() {
           if(validasiInput()==true) {
             String kode_Barang = t_kodeBarang.getText();                                                                                         
             String kode_jenis = t_kodejenisbarang.getText();
