@@ -1,78 +1,60 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dao;
 
-
+import config.Koneksi;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import config.Koneksi;
-import javax.swing.JOptionPane;
-import main.MenuUtama;
-import service.Service_Login;
-import view.Form_Login;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import model.Model_login;
-
+import service.Service_Login;
 
 /**
  *
- * @author MSI GAMING
+ * @author MSI GAMING (Direvisi oleh Partner Coding)
  */
-public class DAO_Login implements Service_Login{
-    
+public class DAO_Login implements Service_Login {
+
     private Connection conn;
-    
-    public DAO_Login(){
+
+    public DAO_Login() {
         conn = Koneksi.getConnection();
     }
 
     @Override
-    public void prosesLogin(Model_login mod_Login) {
+    public Model_login prosesLogin(Model_login mod_login) {
+        Model_login model = null;
+        String sql = "SELECT * FROM pengguna WHERE username=? AND password=?";
         PreparedStatement st = null;
-        ResultSet rs         = null;
-        String Id            = null;
-        String Nama          = null;
-        String Level2         = null;
-        String sql = "SELECT * FROM pengguna WHERE (id_pengguna ='"+mod_Login.getId_user()+"'"
-                +"OR username='"+mod_Login.getUsername()+"')"
-                +"AND password='"+Encrypt.getmd5java(mod_Login.getPass_user())+"'";
-                
-                try{
-                    st = conn.prepareStatement(sql);
-                    rs = st.executeQuery();
-                    if(rs.next()){
-                    Id      = rs.getString("id_pengguna");
-                    Nama    = rs.getString("nama_pengguna");
-                    Level2  = rs.getString("level");
+        ResultSet rs = null;
 
-                    MenuUtama menu = new MenuUtama(Nama, Level2);
-                    menu.setVisible(true);
-                    menu.revalidate();
+        try {
+            if (conn == null) {
+                System.err.println("Koneksi ke database gagal.");
+                return null;
+            }
 
-                    Form_Login lg = new Form_Login();
-                    lg.tutup(true);
-                    }else{
-                    JOptionPane.showMessageDialog(null, "Username dan Password salah", "Pesan", JOptionPane.INFORMATION_MESSAGE);
-                    Form_Login lg = new Form_Login();
-                    lg.tutup(false);
-                    }  
-                }catch(SQLException ex){
-                    Logger.getLogger(DAO_Login.class.getName()).log(Level.SEVERE, null, ex);
-                }finally{
-                    if(st != null){
-                        try{
-                            st.close();
-                        }catch(SQLException ex){
-                            Logger.getLogger(DAO_Login.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    }
-                }
+            st = conn.prepareStatement(sql);
+            st.setString(1, mod_login.getUsername());
+            String encryptedPassword = Encrypt.getmd5java(mod_login.getPass_user());
+            st.setString(2, encryptedPassword);
+            rs = st.executeQuery();
+
+            if (rs.next()) {
+                model = new Model_login();
+                model.setId_user(rs.getString("id_pengguna"));
+                model.setUsername(rs.getString("username"));
+                model.setNama_user(rs.getString("nama_lengkap"));
+                model.setLevel(rs.getString("level"));
+                return model;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (st != null) st.close();
+            } catch (SQLException e) { e.printStackTrace(); }
+        }
+        return null;
     }
 }
-
-

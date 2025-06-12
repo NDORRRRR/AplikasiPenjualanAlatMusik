@@ -1,16 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package service;
 
 import model.Model_login;
 
 /**
  *
- * @author MSI GAMING
+ * @author MSI GAMING (Direvisi oleh Partner Coding)
  */
 public interface Service_Login {
-    void prosesLogin (Model_login mod_Login);
-    
+    // Tipe data kembalian diubah dari 'void' menjadi 'Model_login'
+    Model_login prosesLogin (Model_login mod_login);
 }
