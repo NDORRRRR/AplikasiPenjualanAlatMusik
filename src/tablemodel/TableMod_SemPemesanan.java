@@ -1,107 +1,70 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package tablemodel;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 import model.Model_semPemesanan;
 
 /**
  *
- * @author MSI GAMING
+ * @author RVNOLDYVX (Direvisi oleh Partner Coding)
  */
 public class TableMod_SemPemesanan extends AbstractTableModel {
-    
-      private List<Model_semPemesanan> list = new ArrayList<>();
-    
-    public void tambahData(Model_semPemesanan mod_masuk){
-      list.add(mod_masuk);
-      fireTableRowsInserted(list.size() -1, list.size() -1);
-      JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");
+
+    private List<Model_semPemesanan> list = new ArrayList<>();
+    private final String[] columnNames = {"Kode Barang", "Nama Barang", "Harga", "Jumlah", "Subtotal"};
+
+    public void tambahData(Model_semPemesanan mod_sem) {
+        list.add(mod_sem);
+        fireTableRowsInserted(list.size() - 1, list.size() - 1);
+        System.out.println("Data berhasil ditambahkan ke tabel sementara");
     }
-    
-    public void perbaruiData(int row, Model_semPemesanan mod_masuk ){
-      list.add(row, mod_masuk);
-      fireTableDataChanged();
-      JOptionPane.showMessageDialog(null, "Data berhasil diperbarui");
-    }
-    public void hapusData (int index) {
-      list.remove(index);
-      fireTableRowsDeleted(index, index);
-      JOptionPane.showMessageDialog(null, "Data berhasil dihapus");
-    } 
-    public void clear(){
-      list.clear();
-      fireTableDataChanged();
-    }
-    
-    public void setData(List<Model_semPemesanan> list) {
-        clear();
-        this.list.addAll(list);
+
+    public void perbaruiData(int row, Model_semPemesanan mod_sem) {
+        list.set(row, mod_sem);
         fireTableDataChanged();
     }
-    public void setData (int index, Model_semPemesanan mod_masuk) {
-        list.set(index, mod_masuk);
-        fireTableRowsUpdated(index, index);
+
+    public void hapusData(int index) {
+        list.remove(index);
+        fireTableRowsDeleted(index, index);
+    }
+
+    public void clear() {
+        list.clear();
+        fireTableDataChanged();
     }
     
-    public Model_semPemesanan getData (int index){
-        return list.get(index);
+    public List<Model_semPemesanan> getData(){
+        return list;
     }
-    
-    
+
     @Override
     public int getRowCount() {
-       
-    return list.size();
-       
+        return list.size();
     }
 
     @Override
-    public int getColumnCount() {       
-        return 5;   
+    public int getColumnCount() {
+        return columnNames.length;
     }
 
     @Override
-    public Object getValueAt(int rowIndex, int columnIndex) {      
-        switch (columnIndex){
-            
-          case 0: return list.get(rowIndex).getMod_barang().getKode_Barang();
-          case 1: return list.get(rowIndex).getMod_barang().getNama_barang();
-          case 2: return list.get(rowIndex).getMod_barang().getHarga();
-          case 3: return list.get(rowIndex).getMod_detpesan().getJml_pesan();
-          case 4: return list.get(rowIndex).getMod_detpesan().getSubTotalpesan();
- 
-
-     
-          
-          
-             
-          default: return null;
-        }       
-     }   
-    public String getColumnName(int column) {
-        switch (column){
-            case 0: return "Kode Alat Musik"; 
-            case 1: return "Nama Alat Musik"; 
-            case 2: return "Harga "; 
-            case 3: return "Jumlah Masuk"; 
-            case 4: return "Subtotal";
-            
-            
-                        
-            
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        Model_semPemesanan model = list.get(rowIndex);
+        switch (columnIndex) {
+            case 0: return model.getMod_barang().getKode_Barang();
+            case 1: return model.getMod_barang().getNama_barang();
+            case 2: return model.getMod_barang().getHarga();
+            // PERBAIKAN: Menggunakan nama method yang benar dengan garis bawah (_)
+            case 3: return model.getMod_detpesan().getJml_pemesanan(); // getJml_pemesanan() bukan getJml_pesan()
+            case 4: return model.getMod_detpesan().getSubtotal_pemesanan(); // getSubtotal_pemesanan() bukan getSubTotalpesan()
             default: return null;
+        }
     }
     
+    @Override
+    public String getColumnName(int column) {
+        return columnNames[column];
     }
 }
-
-   
-
-    
-

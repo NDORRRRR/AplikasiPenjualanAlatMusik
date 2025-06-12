@@ -1,14 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
 /**
  *
- * @author MSI GAMING
+ * @author RVNOLDYVX (Direvisi oleh Partner Coding)
+ * Kelas ini adalah POJO (Plain Old Java Object) untuk merepresentasikan data distributor.
  */
 public class Model_distributor {
+
     private String id_distributor;
     private String nama_distributor;
     private String telp_distributor;
@@ -46,3 +44,4 @@ public class Model_distributor {
         this.alamat_distributor = alamat_distributor;
     }
 }
+

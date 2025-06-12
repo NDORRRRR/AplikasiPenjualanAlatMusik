@@ -13,7 +13,7 @@ public class Koneksi {
     public static Connection getConnection() {
         if (connection == null) {
             try {
-                String url = "jdbc:mysql://localhost:3306/alatmusik";
+                String url = "jdbc:mysql://localhost:3306/db_penjualan_alatmusik";
                 String user = "root";
                 String pass = "";
 

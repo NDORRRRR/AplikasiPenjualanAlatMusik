@@ -1,60 +1,58 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
+
+import java.util.Date;
 
 /**
  *
- * @author MSI GAMING
+ * @author RVNOLDYVX (Direvisi oleh Partner Coding)
  */
 public class Model_pemesanan {
 
-    private String no_pesan;
-    private String tgl_pesan;
-    private Long total_pesan;
-    private Model_distributor mod_pesan;
+    private String no_pemesanan;
+    private Date tgl_pemesanan;
+    private Double total_pemesanan;
+    private Model_distributor mod_distributor;
     private Model_pengguna mod_pengguna;
 
-    public String getNo_pesan() {
-        return no_pesan;
+    // Getter yang sudah ada
+    public String getNo_Pemesanan() {
+        return no_pemesanan;
     }
 
-    public void setNo_pesan(String no_pesan) {
-        this.no_pesan = no_pesan;
+    public Date getTgl_Pemesanan() {
+        return tgl_pemesanan;
     }
 
-    public String getTgl_pesan() {
-        return tgl_pesan;
+    public Double getTotal_Pemesanan() {
+        return total_pemesanan;
     }
 
-    public void setTgl_pesan(String tgl_pesan) {
-        this.tgl_pesan = tgl_pesan;
+    public Model_distributor getMod_distributor() {
+        return mod_distributor;
     }
-
-    public Long getTotal_pesan() {
-        return total_pesan;
-    }
-
-    public void setTotal_pesan(Long total_pesan) {
-        this.total_pesan = total_pesan;
-    }
-
-    public Model_distributor getMod_pesan() {
-        return mod_pesan;
-    }
-
-    public void setMod_pesan(Model_distributor mod_pesan) {
-        this.mod_pesan = mod_pesan;
-    }
-
-    public Model_pengguna getMod_pengguna() {
+    
+    public Model_pengguna getMod_pengguna(){
         return mod_pengguna;
+    }
+    
+    // Setter yang hilang telah ditambahkan
+    public void setNo_pemesanan(String no_pemesanan) {
+        this.no_pemesanan = no_pemesanan;
+    }
+
+    public void setTgl_pemesanan(Date tgl_pemesanan) {
+        this.tgl_pemesanan = tgl_pemesanan;
+    }
+
+    public void setTotal_pemesanan(Double total_pemesanan) {
+        this.total_pemesanan = total_pemesanan;
+    }
+
+    public void setMod_distributor(Model_distributor mod_distributor) {
+        this.mod_distributor = mod_distributor;
     }
 
     public void setMod_pengguna(Model_pengguna mod_pengguna) {
         this.mod_pengguna = mod_pengguna;
     }
-
-    
 }
