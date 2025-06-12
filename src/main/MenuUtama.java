@@ -17,6 +17,7 @@ import java.util.Date;
 import view.MasterDistributor;
 import view.MasterPengguna;
 
+
 /**
  *
  * @author RVNOLDYVX
@@ -286,7 +287,16 @@ public class MenuUtama extends javax.swing.JFrame {
          
     
         
-        Menuitem Transaksi1 = new Menuitem (null, true, iconBarang, "Pemesanan", null);
+        Menuitem Transaksi1 = new Menuitem (null, true, iconBarang, "Pemesanan", new ActionListener(){
+                 @Override
+            public void actionPerformed(ActionEvent e) {
+                pn_utama.removeAll();
+                pn_utama.add(new Transaksi_Pemesanan());
+                pn_utama.repaint();
+                pn_utama.revalidate();
+            }
+        });
+        
         Menuitem Transaksi2 = new Menuitem (null, true, iconBarang, "Barang Masuk", null);
         Menuitem Transaksi3 = new Menuitem (null, true, iconBarang, "Barang Keluar", null);
         

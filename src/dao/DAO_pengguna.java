@@ -35,7 +35,7 @@ public class DAO_pengguna implements Service_pengguna {
     @Override
     public void tambahData(Model_pengguna mod_pengguna) {
     PreparedStatement st = null;
-    String sql = "INSERT INTO pengguna(id_pengguna,nama_pengguna,username,password,telp_pengguna,alamat_pengguna,level) VALUES (?,?,?,?,?,?,?)";
+    String sql = "INSERT INTO pengguna(id_pengguna,nama_pengguna,username,password,telp_pengguna,alamat_pengguna,level,gambar) VALUES (?,?,?,?,?,?,?,?)";
     try {
         st = conn.prepareStatement(sql);
       
@@ -46,6 +46,7 @@ public class DAO_pengguna implements Service_pengguna {
         st.setString(5, mod_pengguna.getTelp_pengguna());
         st.setString(6, mod_pengguna.getAlamat_pengguna());
         st.setString(7, mod_pengguna.getLevel());
+        //st.setString(8, mod_pengguna.getImagepath());
         
         st.executeUpdate();
     } catch (SQLException ex) {

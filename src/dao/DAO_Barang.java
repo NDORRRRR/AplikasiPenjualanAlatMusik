@@ -79,7 +79,6 @@ public class DAO_Barang implements Service_barang {
         st.executeUpdate();
         
     } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Perbarui Data Gagal!");
         Logger.getLogger(DAO_Barang.class.getName()).log(Level.SEVERE, null, ex);
     } finally {
         if (st != null) {

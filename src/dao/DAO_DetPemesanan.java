@@ -10,6 +10,14 @@ import java.util.List;
 import model.Model_DetPemesanan;
 import service.Service_DetPemesanan;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import model.Model_distributor;
+import model.Model_pemesanan;
+import model.Model_pengguna;
 
 /**
  *
@@ -44,13 +52,12 @@ public class DAO_DetPemesanan implements Service_DetPemesanan{
     }
 
     @Override
-    public List<Model_DetPemesanan> ambilData(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<Model_DetPemesanan> getData(String id) {
+    
     }
-
     @Override
     public List<Model_DetPemesanan> pencarian(String id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-  
+
 }

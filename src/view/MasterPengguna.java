@@ -76,9 +76,6 @@ public class MasterPengguna extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         cbx_level = new javax.swing.JComboBox<>();
         t_password = new javax.swing.JPasswordField();
-        lb_gambar = new javax.swing.JLabel();
-        t_imagepath = new javax.swing.JTextField();
-        btn_gambar = new javax.swing.JButton();
 
         setLayout(new java.awt.CardLayout());
 
@@ -294,19 +291,6 @@ public class MasterPengguna extends javax.swing.JPanel {
 
         t_password.setText("jPasswordField1");
 
-        t_imagepath.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                t_imagepathActionPerformed(evt);
-            }
-        });
-
-        btn_gambar.setText("jButton3");
-        btn_gambar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_gambarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -327,14 +311,7 @@ public class MasterPengguna extends javax.swing.JPanel {
                     .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(t_id, javax.swing.GroupLayout.Alignment.LEADING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lb_gambar, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(t_imagepath, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_gambar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(56, 56, 56))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -342,27 +319,19 @@ public class MasterPengguna extends javax.swing.JPanel {
                 .addGap(23, 23, 23)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(t_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(7, 7, 7)
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(t_nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(t_username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(7, 7, 7)
-                        .addComponent(txt_pass)
-                        .addGap(18, 18, 18)
-                        .addComponent(t_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lb_gambar, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(t_imagepath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_gambar))))
+                .addComponent(t_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addComponent(t_nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(t_username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addComponent(txt_pass)
+                .addGap(18, 18, 18)
+                .addComponent(t_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -391,7 +360,7 @@ public class MasterPengguna extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(btn_batal1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         tambahDataLayout.setVerticalGroup(
             tambahDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -513,23 +482,6 @@ public class MasterPengguna extends javax.swing.JPanel {
     private void cbx_levelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_levelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbx_levelActionPerformed
-
-    private void t_imagepathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_t_imagepathActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_t_imagepathActionPerformed
-
-    private void btn_gambarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_gambarActionPerformed
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(new File (System.getProperty("user.home")));
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.IMAGE", "jpg", "gif", "png");
-        fileChooser.addChoosableFileFilter(filter);
-        int result = fileChooser.showSaveDialog(null);
-        if (result == JFileChooser.APPROVE_OPTION) {
-            File selectedFile =  fileChooser.getSelectedFile();
-            String path = selectedFile.getAbsolutePath();
-            t_imagepath.setText(path);
-        }
-    }//GEN-LAST:event_btn_gambarActionPerformed
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -539,7 +491,6 @@ public class MasterPengguna extends javax.swing.JPanel {
     private javax.swing.JButton bt_tambah1;
     private javax.swing.JButton btn_batal;
     private javax.swing.JButton btn_batal1;
-    private javax.swing.JButton btn_gambar;
     private javax.swing.JButton btn_hapus;
     private javax.swing.JComboBox<String> cbx_level;
     private javax.swing.JButton jButton2;
@@ -552,12 +503,10 @@ public class MasterPengguna extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lb_gambar;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JTextField t_alamat;
     private javax.swing.JTextField t_cari;
     private javax.swing.JTextField t_id;
-    private javax.swing.JTextField t_imagepath;
     private javax.swing.JTextField t_nama;
     private javax.swing.JPasswordField t_password;
     private javax.swing.JTextField t_telp;
@@ -640,6 +589,7 @@ public class MasterPengguna extends javax.swing.JPanel {
             String telepon = t_telp.getText();
             String alamat = t_alamat.getText();
             String level = cbx_level.getSelectedItem().toString();
+            //String imagepath = t_imagepath.getText();
             
             Model_pengguna model = new Model_pengguna();
             model.setId_pengguna(ID);
@@ -649,6 +599,7 @@ public class MasterPengguna extends javax.swing.JPanel {
             model.setTelp_pengguna(telepon);
             model.setAlamat_pengguna(alamat);
             model.setLevel(level);
+            //model.setImagepath(imagepath);
          
            
             

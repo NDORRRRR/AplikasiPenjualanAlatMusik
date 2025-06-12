@@ -16,7 +16,6 @@
             <file>file:/C:/Users/MSI%20GAMING/AplikasiPenjualanAlatMusik/src/dao/DAO_Pemesanan.java</file>
             <file>file:/C:/Users/MSI%20GAMING/AplikasiPenjualanAlatMusik/src/dao/DAO_JenisBarang.java</file>
             <file>file:/C:/Users/MSI%20GAMING/AplikasiPenjualanAlatMusik/src/dao/DAO_SemPemesanan.java</file>
-            <file>file:/C:/Users/MSI%20GAMING/AplikasiPenjualanAlatMusik/src/view/Transaksi_Pemesanan.java</file>
             <file>file:/C:/Users/MSI%20GAMING/AplikasiPenjualanAlatMusik/src/model/Model_pemesanan.java</file>
             <file>file:/C:/Users/MSI%20GAMING/AplikasiPenjualanAlatMusik/src/tablemodel/TableMod_Pemesanan.java</file>
             <file>file:/C:/Users/MSI%20GAMING/AplikasiPenjualanAlatMusik/src/model/Model_DetPemesanan.java</file>
@@ -31,6 +30,13 @@
             <file>file:/C:/Users/MSI%20GAMING/AplikasiPenjualanAlatMusik/src/config/Koneksi.java</file>
             <file>file:/C:/Users/MSI%20GAMING/AplikasiPenjualanAlatMusik/src/model/Model_login.java</file>
             <file>file:/C:/Users/MSI%20GAMING/AplikasiPenjualanAlatMusik/src/view/Form_Login.java</file>
+            <file>file:/C:/Users/MSI%20GAMING/AplikasiPenjualanAlatMusik/src/main/FormBarang.java</file>
+            <file>file:/C:/Users/MSI%20GAMING/AplikasiPenjualanAlatMusik/src/model/Model_jenis_barang.java</file>
+            <file>file:/C:/Users/MSI%20GAMING/AplikasiPenjualanAlatMusik/src/view/MasterJenisBarang.java</file>
+            <file>file:/C:/Users/MSI%20GAMING/AplikasiPenjualanAlatMusik/src/model/Model_pengguna.java</file>
+            <file>file:/C:/Users/MSI%20GAMING/AplikasiPenjualanAlatMusik/src/view/Transaksi_Pemesanan.java</file>
+            <file>file:/C:/Users/MSI%20GAMING/AplikasiPenjualanAlatMusik/src/dao/DAO_Barang.java</file>
+            <file>file:/C:/Users/MSI%20GAMING/AplikasiPenjualanAlatMusik/src/service/Service_DetPemesanan.java</file>
         </group>
     </open-files>
 </project-private>
