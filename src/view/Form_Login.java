@@ -5,7 +5,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import model.Model_login;
 import service.Service_Login;
-import main.MenuUtama; // Pastikan import ke MenuUtama benar
+import main.MenuUtama;
 
 /**
  *
@@ -24,8 +24,7 @@ public class Form_Login extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
-        // KODE TAMPILAN ASLI ANDA SAYA PERTAHANKAN
-        // TIDAK ADA YANG DIUBAH DI SINI
+
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         t_password = new javax.swing.JTextField();
@@ -52,9 +51,11 @@ public class Form_Login extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guitar_PNG3413 (1).png"))); // NOI18N
+        // --- PERBAIKAN FINAL DI SINI ---
+        // Kode ini sekarang mencari "gitar.png" dari root classpath.
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gitar.png"))); // <-- PERUBAHAN TERAKHIR
 
-        t_password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        t_password.setFont(new java.awt.Font("Segoe UI", 0, 14));
         t_password.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         t_password.setText("Password");
         t_password.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -69,13 +70,13 @@ public class Form_Login extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14));
         jLabel2.setText("Wellcome To Our Music Store");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24));
         jLabel3.setText("Login");
 
-        t_username.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        t_username.setFont(new java.awt.Font("Segoe UI", 0, 14));
         t_username.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         t_username.setText("Username");
         t_username.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -85,10 +86,10 @@ public class Form_Login extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-user-30.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-user-30.png")));
 
         tb_button.setBackground(new java.awt.Color(0, 0, 0));
-        tb_button.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        tb_button.setFont(new java.awt.Font("Segoe UI", 1, 14));
         tb_button.setForeground(new java.awt.Color(255, 255, 255));
         tb_button.setText("LOGIN");
         tb_button.addActionListener(new java.awt.event.ActionListener() {
@@ -97,16 +98,18 @@ public class Form_Login extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-password-30.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-password-30.png")));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18));
         jLabel6.setText("X");
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel6MouseClicked(evt);
             }
         });
-
+        
+        // ... Sisa kode initComponents() tidak perlu diubah ...
+        
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -181,7 +184,7 @@ public class Form_Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>                        
 
-    // KODE ASLI EVENT HANDLER ANDA
+    // ... sisa kode tidak perlu diubah ...
     private void t_passwordFocusGained(java.awt.event.FocusEvent evt) {                                       
        t_password.setText("");
     }                                      
@@ -236,7 +239,6 @@ public class Form_Login extends javax.swing.JFrame {
     private javax.swing.JButton tb_button;
     // End of variables declaration                   
 
-    // INI ADALAH METHOD YANG DIPERBAIKI TOTAL
     private void prosesLogin() {
         if (validasiInput()) {
             String user = t_username.getText();
@@ -246,25 +248,18 @@ public class Form_Login extends javax.swing.JFrame {
             mod_login.setUsername(user);
             mod_login.setPass_user(pass);
 
-            // Panggil service HANYA SEKALI dan simpan hasilnya
             Model_login userSession = servis.prosesLogin(mod_login);
 
-            // Periksa hasil yang disimpan
             if (userSession != null) {
-                // Jika user tidak null, login berhasil
-                // Set data pengguna ke variabel statis di Model_login
                 Model_login.setId_user_static(userSession.getId_user());
                 Model_login.setUsername_static(userSession.getUsername());
                 Model_login.setNama_user_static(userSession.getNama_user());
                 Model_login.setLevel_static(userSession.getLevel());
 
-                // Buka menu utama dan tutup form login
-                // Memanggil konstruktor MenuUtama yang benar
                 MenuUtama menu = new MenuUtama(userSession.getNama_user(), userSession.getLevel());
                 menu.setVisible(true);
                 dispose();
             } else {
-                // Jika user null, login gagal
                 JOptionPane.showMessageDialog(this, "Username dan Password salah", "Peringatan", JOptionPane.WARNING_MESSAGE);
             }
         }
